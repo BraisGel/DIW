@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="ca">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <title>Neststay · Guia d'estil</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&family=Sora:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.4"></script>
+        <style type="text/tailwindcss">
+            @theme {
+                --color-ink: #0b2545;
+                --color-brand: #13599b;
+                --color-cta: #d13a2a;
+                --color-cta-hover: #b5301f;
+                --color-cta-active: #982716;
+                --color-soft: #cbdff1;
+                --color-base: #f8fbfe;
+                --font-display: "Lexend", sans-serif;
+                --font-body: "Work Sans", sans-serif;
+                --font-price: "Sora", sans-serif;
+            }
+            @layer components {
+                .sec {
+                    @apply mx-auto max-w-5xl px-5 py-10 md:px-8;
+                }
+                .sec h2 {
+                    @apply mb-3 font-display text-2xl font-semibold;
+                }
+                .sec h3 {
+                    @apply mb-2 mt-6 font-display text-lg font-semibold;
+                }
+                .tile {
+                    @apply rounded-2xl p-5 ring-1 ring-soft;
+                }
+                .lbl {
+                    @apply mt-2 text-xs text-ink/70;
+                }
+                .btn {
+                    @apply h-12 rounded-xl px-6 font-display font-semibold text-white;
+                }
+            }
+        </style>
+    </head>
+    <body class="bg-base font-body text-ink antialiased">
+        <svg width="0" height="0" class="absolute" aria-hidden="true">
+            <symbol id="pin" viewBox="0 0 24 24">
+                <path
+                    fill="currentColor"
+                    d="M12 22.5C7 17 4.5 13.2 4.5 9.5a7.5 7.5 0 0 1 15 0c0 3.7-2.5 7.5-7.5 13z"
+                />
+                <ellipse fill="var(--d)" cx="12" cy="8.2" rx="1.9" ry="2.4" />
+                <path
+                    fill="none"
+                    stroke="var(--d)"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    d="M7.9 10.8c.9 3 2.6 4.2 4.1 4.2s3.2-1.2 4.1-4.2"
+                />
+            </symbol>
+        </svg>
+
+        <header class="bg-ink px-5 py-14 text-base md:px-8">
+            <div class="mx-auto max-w-5xl">
+                <div
+                    class="flex items-center gap-3 font-display text-4xl font-extrabold md:text-6xl"
+                >
+                    <svg class="size-12 md:size-16" style="color: #cbdff1; --d: #0b2545">
+                        <use href="#pin" /></svg
+                    >Neststay
+                </div>
+                <p class="mt-3 text-lg">
+                    Guia d'estil · Disseny d'interfícies web · UD1 Activitat 1
+                </p>
+                <nav class="mt-6 flex flex-wrap gap-2 text-sm" aria-label="Índex">
+                    <a class="rounded-full bg-base/15 px-4 py-1.5" href="#marca">1. Marca</a>
+                    <a class="rounded-full bg-base/15 px-4 py-1.5" href="#colors">2. Colors</a>
+                    <a class="rounded-full bg-base/15 px-4 py-1.5" href="#tipografia">3. Tipografia</a>
+                    <a class="rounded-full bg-base/15 px-4 py-1.5" href="#espai">4. Espai</a>
+                    <a class="rounded-full bg-base/15 px-4 py-1.5" href="#icones">5. Icones</a>
+                    <a class="rounded-full bg-base/15 px-4 py-1.5" href="#imatges">6. Imatges</a>
+                    <a class="rounded-full bg-base/15 px-4 py-1.5" href="#components">7. Components</a>
+                </nav>
+            </div>
+        </header>
+
+        <section id="marca" class="sec">
+            <h2>1. Marca i logotip</h2>
+            <p class="max-w-prose">
+                <b>Neststay</b> és una web per buscar i reservar allotjaments. El nom uneix
+                <i>nest</i> (niu) i <i>stay</i> (estada): un lloc còmode on quedar-se. El logotip
+                combina un pin de mapa, que representa la ubicació, amb un ou dins d'un niu corb,
+                que representa la sensació de llar. Està dibuixat en SVG a partir de formes
+                geomètriques simples (un pin, una el·lipse i un arc), per això escala bé a qualsevol
+                mida.
+            </p>
+            <div class="mt-6 grid gap-4 sm:grid-cols-3">
+                <div class="tile bg-base">
+                    <div class="flex items-center gap-2 font-display text-2xl font-semibold">
+                        <svg class="size-10" style="color: #13599b; --d: #f8fbfe">
+                            <use href="#pin" />
+                        </svg>
+                        Neststay
+                    </div>
+                    <p class="lbl">Principal, per a fons clar</p>
+                </div>
+                <div class="tile bg-ink text-base">
+                    <div class="flex items-center gap-2 font-display text-2xl font-semibold">
+                        <svg class="size-10" style="color: #cbdff1; --d: #0b2545">
+                            <use href="#pin" /></svg
+                        >Neststay
+                    </div>
+                    <p class="mt-2 text-xs text-base/80">
+                        Per a fons fosc (mode fosc del navegador)
+                    </p>
+                </div>
+                <div class="tile">
+                    <div class="flex items-end gap-4">
+                        <div class="grid size-16 place-items-center rounded-2xl bg-brand">
+                            <svg class="size-10" style="color: #f8fbfe; --d: #13599b">
+                                <use href="#pin" />
+                            </svg>
+                        </div>
+                        <div class="grid size-8 place-items-center rounded-lg bg-brand">
+                            <svg class="size-5" style="color: #f8fbfe; --d: #13599b">
+                                <use href="#pin" />
+                            </svg>
+                        </div>
+                        <div class="grid size-4 place-items-center rounded bg-brand">
+                            <svg class="size-3" style="color: #f8fbfe; --d: #13599b">
+                                <use href="#pin" />
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="lbl">Quadrat per a favicon (64, 32 i 16 px)</p>
+                </div>
+            </div>
+            <p class="mt-4 max-w-prose text-sm">
+                Normes: espai lliure mínim al voltant del logo igual a l'amplada de l'ou. Mida
+                mínima: 16 px el símbol sol, 96 px amb nom. No s'usen blanc ni negre purs: els fons
+                són <b>#F8FBFE</b> i <b>#0B2545</b>.
+            </p>
+        </section>
+
+        <section id="colors" class="sec">
+            <h2>2. Paleta de colors</h2>
+            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                <div class="tile">
+                    <div class="h-16 rounded-xl bg-ink"></div>
+                    <b class="mt-2 block font-price">#0B2545</b
+                    ><span class="lbl block"
+                        >Tinta. Text principal, fons del menú i del mode fosc. Contrast amb el fons
+                        base: més de 14:1.</span
+                    >
+                </div>
+                <div class="tile">
+                    <div class="h-16 rounded-xl bg-brand"></div>
+                    <b class="mt-2 block font-price">#13599B</b
+                    ><span class="lbl block"
+                        >Marca. Enllaços, xips seleccionats, icones i preu normal. Amb text clar:
+                        uns 7:1.</span
+                    >
+                </div>
+                <div class="tile">
+                    <div class="h-16 rounded-xl bg-cta"></div>
+                    <b class="mt-2 block font-price">#D13A2A</b
+                    ><span class="lbl block"
+                        >Crida a l'acció (CTA). Només per a botons principals i per al preu rebaixat
+                        amb la seva etiqueta de descompte. Amb text blanc: uns 4,8:1.</span
+                    >
+                </div>
+                <div class="tile">
+                    <div class="h-16 rounded-xl bg-soft"></div>
+                    <b class="mt-2 block font-price">#CBDFF1</b
+                    ><span class="lbl block"
+                        >Fons secundari. Xips, targeta de reserva, camps i element actiu del
+                        menú.</span
+                    >
+                </div>
+                <div class="tile">
+                    <div class="h-16 rounded-xl bg-base ring-1 ring-soft"></div>
+                    <b class="mt-2 block font-price">#F8FBFE</b
+                    ><span class="lbl block"
+                        >Fons base de totes les pàgines i text sobre colors foscos.</span
+                    >
+                </div>
+            </div>
+            <p class="mt-4 max-w-prose text-sm">
+                Criteri: tres neutres (tinta i dos fons clars), un color de marca i un únic color
+                càlid per a l'acció, de manera que el botó de reserva sigui sempre l'element que més
+                destaca. Estats del CTA: hover <b>#B5301F</b>, actiu <b>#982716</b>.
+            </p>
+        </section>
+
+        <section id="tipografia" class="sec">
+            <h2>3. Tipografia</h2>
+            <div class="grid gap-4 md:grid-cols-3">
+                <div class="tile">
+                    <p class="font-display text-5xl font-semibold">Aa</p>
+                    <b class="font-display">Lexend</b>
+                    <p class="lbl">
+                        Títols, noms d'allotjament i text dels botons. Pesos 600 i 800.
+                    </p>
+                </div>
+                <div class="tile">
+                    <p class="font-body text-5xl">Aa</p>
+                    <b>Work Sans</b>
+                    <p class="lbl">
+                        Text de cos, descripcions, formularis i xips. Pesos 400 i 500.
+                    </p>
+                </div>
+                <div class="tile">
+                    <p class="font-price text-5xl font-bold">50,99</p>
+                    <b class="font-price">Sora</b>
+                    <p class="lbl">Preus, xifres i títol del hero d'Inici. Pesos 500 i 700.</p>
+                </div>
+            </div>
+            <h3>Escala (mobile first)</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full min-w-[28rem] text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-soft">
+                            <th class="py-2">Nivell</th>
+                            <th>Mòbil</th>
+                            <th>Escriptori (≥768 px)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-soft">
+                            <td class="py-2">Títol principal (h1)</td>
+                            <td>36 px</td>
+                            <td>60 px</td>
+                        </tr>
+                        <tr class="border-b border-soft">
+                            <td class="py-2">Títol de secció (h2)</td>
+                            <td>24 px</td>
+                            <td>28 px</td>
+                        </tr>
+                        <tr class="border-b border-soft">
+                            <td class="py-2">Text</td>
+                            <td>16 px</td>
+                            <td>16 px</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">Text petit i xips</td>
+                            <td>14 px</td>
+                            <td>14 px</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="mt-3 max-w-prose text-sm">
+                Es parteix de la mida mòbil i només creix a escriptori en els títols. Línies de text
+                de màxim 65–75 caràcters.
+            </p>
+        </section>
+
+        <section id="espai" class="sec">
+            <h2>4. Regles d'espai i estructura</h2>
+            <ul class="max-w-prose list-disc space-y-2 pl-5">
+                <li><b>Unitat base de 4 px.</b> Escala d'espais: 4, 8, 16, 24, 32 i 48 px.</li>
+                <li>
+                    <b>Mobile first.</b> Es dissenya primer a 360–430 px, amb marges laterals de 32
+                    px. Punt de ruptura principal: 768 px (escriptori: menú a dalt). La graella de
+                    targetes s'adapta sola: columnes d'almenys 352 px que s'estiren fins que hi cap
+                    una més.
+                </li>
+                <li>
+                    <b>Contenidor</b> de 1920 px màxim, centrat, amb 80 px de marge lateral a
+                    escriptori gran (40 px entre 768 i 1023 px).
+                </li>
+                <li>
+                    <b>Estructura de cada pàgina:</b> menú fix (inferior a mòbil, superior a
+                    escriptori), contingut en seccions separades per 40 px i bloc final de notes.
+                </li>
+                <li>
+                    <b>Hero d'Inici:</b> 90 % de l'alçada de pantalla. Allotjament: galeria al 55 %
+                    de l'alçada a mòbil.
+                </li>
+                <li>
+                    <b>Radis:</b> 12 px en camps i botons, 16 px en targetes, 32 px en la base del
+                    hero.
+                </li>
+            </ul>
+        </section>
+
+        <section id="icones" class="sec">
+            <h2>5. Icones</h2>
+            <p class="max-w-prose">
+                Icones pròpies en SVG amb estil de línia (com la família Lucide): 24 px, traç de
+                1,75 px, extrems arrodonits i monocromàtiques amb el color del text
+                (<code>currentColor</code>). Al menú es mostren sobre fons tinta amb color base; la
+                icona activa va en tinta sobre #CBDFF1.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-4">
+                <div class="tile grid place-items-center text-center">
+                    <svg
+                        viewBox="0 0 24 24"
+                        class="size-8 text-brand"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M3 10.5 12 3l9 7.5" />
+                        <path d="M5 9.5V20h14V9.5" />
+                        <path d="M10 20v-6h4v6" /></svg
+                    ><span class="lbl">Inici</span>
+                </div>
+                <div class="tile grid place-items-center text-center">
+                    <svg
+                        viewBox="0 0 24 24"
+                        class="size-8 text-brand"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="m15.5 8.5-2 5-5 2 2-5z" /></svg
+                    ><span class="lbl">Explora</span>
+                </div>
+                <div class="tile grid place-items-center text-center">
+                    <svg
+                        viewBox="0 0 24 24"
+                        class="size-8 text-brand"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z" />
+                        <path d="M9 4v14M15 6v14" /></svg
+                    ><span class="lbl">Mapa</span>
+                </div>
+                <div class="tile grid place-items-center text-center">
+                    <svg
+                        viewBox="0 0 24 24"
+                        class="size-8 text-brand"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <rect x="3" y="5" width="18" height="16" rx="2" />
+                        <path d="M3 10h18M8 3v4M16 3v4" /></svg
+                    ><span class="lbl">Reserves</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="imatges" class="sec">
+            <h2>6. Directrius per a imatges</h2>
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+                <div>
+                    <div class="grid aspect-[9/16] place-items-center rounded-2xl bg-soft text-sm">
+                        9:16
+                    </div>
+                    <p class="lbl">Hero d'Inici a mòbil (es retalla a 90 % d'alçada)</p>
+                </div>
+                <div>
+                    <div class="grid aspect-video place-items-center rounded-2xl bg-soft text-sm">
+                        16:9
+                    </div>
+                    <p class="lbl">Hero d'Inici a escriptori</p>
+                </div>
+                <div>
+                    <div class="grid aspect-[5/3] place-items-center rounded-2xl bg-soft text-sm">
+                        5:3
+                    </div>
+                    <p class="lbl">Targetes de recomanació i resultats</p>
+                </div>
+                <div>
+                    <div class="grid aspect-[16/10] place-items-center rounded-2xl bg-soft text-sm">
+                        16:10
+                    </div>
+                    <p class="lbl">
+                        Galeria d'allotjament a escriptori (a mòbil 100 % ample, 55 % d'alçada)
+                    </p>
+                </div>
+            </div>
+            <ul class="mt-4 max-w-prose list-disc space-y-1 pl-5 text-sm">
+                <li>
+                    Sempre <code>object-fit: cover</code> i centrades en el llit o l'espai
+                    principal.
+                </li>
+                <li>
+                    Fotos lluminoses i naturals; brillantor +5 % com a màxim, sense filtres de
+                    color.
+                </li>
+                <li>
+                    Sobre text: degradat de tinta (#0B2545) del 40 % a 70 % per garantir la lectura.
+                </li>
+                <li>
+                    Cantonades arrodonides de 16 px; sense vores. Ombra suau només a les targetes
+                    flotants.
+                </li>
+            </ul>
+        </section>
+
+        <section id="components" class="sec">
+            <h2>7. Estil dels elements de la interfície</h2>
+            <h3>Botons</h3>
+            <div class="flex flex-wrap items-center gap-3">
+                <div>
+                    <button class="btn bg-cta">Reserva ara</button>
+                    <p class="lbl">Normal</p>
+                </div>
+                <div>
+                    <button class="btn bg-cta-hover">Reserva ara</button>
+                    <p class="lbl">Hover</p>
+                </div>
+                <div>
+                    <button class="btn bg-cta-active">Reserva ara</button>
+                    <p class="lbl">Actiu</p>
+                </div>
+                <div>
+                    <button class="btn bg-cta outline-2 outline-offset-2 outline-brand">
+                        Reserva ara
+                    </button>
+                    <p class="lbl">Focus</p>
+                </div>
+                <div>
+                    <button
+                        class="btn bg-soft text-ink/50"
+                        disabled
+                        style="color: rgb(11 37 69 / 0.5)"
+                    >
+                        Reserva ara
+                    </button>
+                    <p class="lbl">Desactivat</p>
+                </div>
+                <div>
+                    <button class="btn border-2 border-brand bg-transparent" style="color: #13599b">
+                        Veure més
+                    </button>
+                    <p class="lbl">Secundari</p>
+                </div>
+            </div>
+            <p class="mt-2 text-sm">
+                Alçada de 48 px (zona tàctil), radi 12 px, text Lexend 600. El color d'acció només
+                s'usa en un botó principal per pantalla.
+            </p>
+
+            <h3>Camps de formulari i xips</h3>
+            <div class="grid gap-4 md:grid-cols-3">
+                <label class="text-sm font-medium"
+                    >Destí<input
+                        class="mt-1 h-12 w-full rounded-xl bg-white px-4 ring-1 ring-soft"
+                        placeholder="Ciutadella de Menorca"
+                    /><span class="lbl block">Normal</span></label
+                >
+                <label class="text-sm font-medium"
+                    >Destí<input
+                        class="mt-1 h-12 w-full rounded-xl bg-white px-4 outline-2 outline-brand"
+                        value="Ciutadella"
+                    /><span class="lbl block">Focus</span></label
+                >
+                <label class="text-sm font-medium"
+                    >Data de sortida<input
+                        class="mt-1 h-12 w-full rounded-xl bg-white px-4 ring-2 ring-cta"
+                        value="10/11/2026"
+                    /><span class="mt-1 block text-xs text-cta"
+                        >La sortida ha de ser posterior a l'entrada.</span
+                    ></label
+                >
+            </div>
+            <div class="mt-4 flex gap-2 text-sm">
+                <span class="rounded-full bg-soft px-4 py-1.5">Central</span
+                ><span class="rounded-full bg-brand px-4 py-1.5 text-base"
+                    >Terrassa (seleccionat)</span
+                >
+            </div>
+
+            <h3>Menú de navegació</h3>
+            <div class="max-w-md rounded-2xl bg-ink p-1.5">
+                <div class="flex gap-1 text-xs font-medium text-base">
+                    <span class="flex-1 rounded-xl bg-soft py-2 text-center text-ink"
+                        >Inici (actiu)</span
+                    ><span class="flex-1 py-2 text-center">Explora</span
+                    ><span class="flex-1 py-2 text-center">Mapa</span
+                    ><span class="flex-1 py-2 text-center">Reserves</span>
+                </div>
+            </div>
+            <p class="mt-2 text-sm">
+                Mòbil: barra inferior fixa, 4 elements. Escriptori (≥768 px): barra superior fixa
+                amb el logo a l'esquerra.
+            </p>
+
+            <h3>Notificacions i diàleg</h3>
+            <div class="grid gap-4 md:grid-cols-2">
+                <div class="space-y-3 text-sm">
+                    <div class="rounded-xl bg-soft p-4">
+                        <b>Reserva confirmada.</b> T'hem enviat els detalls per correu.
+                    </div>
+                    <div class="rounded-xl bg-white p-4 ring-2 ring-cta">
+                        <b class="text-cta">No s'ha pogut reservar.</b> Aquestes dates ja no estan
+                        disponibles. Tria unes altres dates.
+                    </div>
+                </div>
+                <div class="rounded-2xl bg-white p-5 shadow-lg ring-1 ring-soft">
+                    <h4 class="font-display text-lg font-semibold">Cancel·lar la reserva?</h4>
+                    <p class="mt-1 text-sm">Perdràs aquestes dates.</p>
+                    <div class="mt-4 flex justify-end gap-2">
+                        <button
+                            class="btn border-2 border-brand bg-transparent"
+                            style="color: #13599b"
+                        >
+                            Mantén-la</button
+                        ><button class="btn bg-cta">Cancel·la</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="px-5 pb-12 text-center text-sm text-ink/70">Neststay · Guia d'estil</footer>
+    </body>
+</html>

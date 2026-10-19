@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ca">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <title>Neststay · Resultats</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&family=Sora:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.4"></script>
+        <style type="text/tailwindcss">
+            @theme {
+                --color-ink: #0b2545;
+                --color-brand: #13599b;
+                --color-cta: #d13a2a;
+                --color-cta-hover: #b5301f;
+                --color-cta-active: #982716;
+                --color-soft: #cbdff1;
+                --color-base: #f8fbfe;
+                --font-display: "Lexend", sans-serif;
+                --font-body: "Work Sans", sans-serif;
+                --font-price: "Sora", sans-serif;
+            }
+        </style>
+        <style>
+            @media (max-width: 767px) {
+                #main-nav {
+                    bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+                }
+            }
+        </style>
+    </head>
+    <body class="bg-base font-body text-lg text-ink antialiased">
+        <nav
+            id="main-nav"
+            class="fixed inset-x-5 z-50 md:inset-x-0 md:top-0 md:bg-ink md:px-10 lg:px-20 md:py-4"
+            aria-label="Navegació principal"
+        ></nav>
+
+        <main class="md:pt-20">
+            <div class="sticky top-0 z-40 border-b border-soft bg-base/95 backdrop-blur md:top-20">
+                <div class="mx-auto max-w-[120rem] px-8 py-5 md:px-10 lg:px-20 md:py-4">
+                    <button
+                        class="flex w-full items-center justify-between rounded-2xl bg-soft px-6 py-5 text-left text-[1rem] md:hidden"
+                    >
+                        <span
+                            ><b class="block font-display text-lg">Ciutadella de Menorca</b>12–19
+                            nov · 2 persones</span
+                        ><span class="font-medium text-brand">Edita</span>
+                    </button>
+                    <div class="hidden items-end gap-4 md:flex">
+                        <label class="flex flex-1 flex-col gap-2 text-sm font-medium"
+                            >Destí<input
+                                value="Ciutadella de Menorca"
+                                class="h-12 w-full rounded-xl bg-white px-4 text-[1rem] ring-1 ring-soft"
+                        /></label>
+                        <label class="flex flex-col gap-2 text-sm font-medium"
+                            >Entrada<input
+                                value="12/11/2026"
+                                class="h-12 w-40 rounded-xl bg-white px-4 text-[1rem] ring-1 ring-soft"
+                        /></label>
+                        <label class="flex flex-col gap-2 text-sm font-medium"
+                            >Sortida<input
+                                value="19/11/2026"
+                                class="h-12 w-40 rounded-xl bg-white px-4 text-[1rem] ring-1 ring-soft"
+                        /></label>
+                        <div class="flex flex-col gap-2 text-sm font-medium">
+                            Persones
+                            <div
+                                class="flex h-12 items-center gap-4 rounded-xl bg-white px-4 text-[1rem] ring-1 ring-soft"
+                            >
+                                <button aria-label="Menys">−</button
+                                ><span class="w-4 text-center">2</span
+                                ><button aria-label="Més">+</button>
+                            </div>
+                        </div>
+                        <button
+                            class="h-12 rounded-xl bg-cta px-7 font-display text-[1rem] font-semibold text-white hover:bg-cta-hover active:bg-cta-active"
+                        >
+                            Cerca
+                        </button>
+                    </div>
+                    <div class="mt-5 flex gap-3 overflow-x-auto md:mt-4 pb-1 text-[1rem]">
+                        <button class="shrink-0 rounded-full bg-brand px-6 py-2.5 text-base">
+                            Preu
+                        </button>
+                        <button class="shrink-0 rounded-full bg-soft px-6 py-2.5">
+                            1 bany o més
+                        </button>
+                        <button class="shrink-0 rounded-full bg-soft px-6 py-2.5">Central</button>
+                        <button class="shrink-0 rounded-full bg-soft px-6 py-2.5">Terrassa</button>
+                        <button class="shrink-0 rounded-full bg-soft px-6 py-2.5">
+                            2 habitacions
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="mx-auto max-w-[120rem] px-8 pt-10 md:px-10 lg:px-20 md:pt-8">
+                <div class="flex items-center justify-between gap-4">
+                    <h1 class="font-display text-2xl font-semibold md:text-3xl">
+                        24 allotjaments a Ciutadella
+                    </h1>
+                    <label class="text-[1rem]"
+                        >Ordena
+                        <select class="ml-1 h-11 rounded-xl bg-soft px-3">
+                            <option>Preu</option>
+                            <option>Valoració</option>
+                        </select></label
+                    >
+                </div>
+                <div
+                    id="results"
+                    class="mt-7 grid grid-cols-[repeat(auto-fill,minmax(min(100%,22rem),1fr))] gap-8 md:mt-6 md:gap-6"
+                ></div>
+            </section>
+        </main>
+
+        <script>
+            const PAGES = {
+                home: "index.html",
+                explore: "results.html",
+                lodging: "lodging.html",
+                guide: "styleguide.html",
+            };
+            const IMG_DIR = "../../assets/imgs/"; // hotel-1.jpg, hotel-2.jpg, hotel-3.jpg
+            const imgFor = (i) => `${IMG_DIR}hotel-${(i % 3) + 1}.jpg`;
+            const ICON = {
+                home: '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/>',
+                explore: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',
+                map: '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
+                bookings:
+                    '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+            };
+            const MENU = [
+                ["home", "Inici"],
+                ["explore", "Explora"],
+                ["map", "Mapa"],
+                ["bookings", "Reserves"],
+            ];
+            const svgIcon = (p) =>
+                `<svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+            const PIN =
+                '<svg viewBox="0 0 24 24" class="size-8" style="color:#F8FBFE;--d:#0B2545" aria-hidden="true"><path fill="currentColor" d="M12 22.5C7 17 4.5 13.2 4.5 9.5a7.5 7.5 0 0 1 15 0c0 3.7-2.5 7.5-7.5 13z"/><ellipse fill="var(--d)" cx="12" cy="8.2" rx="1.9" ry="2.4"/><path fill="none" stroke="var(--d)" stroke-width="1.5" stroke-linecap="round" d="M7.9 10.8c.9 3 2.6 4.2 4.1 4.2s3.2-1.2 4.1-4.2"/></svg>';
+            function renderNav(active, wide = "md:max-w-[120rem]") {
+                const links = MENU.map(
+                    ([k, label]) =>
+                        `<a href="${PAGES[k] || "#"}" ${k === active ? 'aria-current="page"' : ""} class="flex flex-1 flex-col items-center gap-1 rounded-xl px-3 py-3 text-[13px] md:justify-center md:px-6 font-medium md:flex-none md:flex-row md:gap-2 md:text-[1rem] ${k === active ? "bg-soft text-ink" : "text-base hover:bg-white/10"}">${svgIcon(ICON[k])}${label}</a>`
+                ).join("");
+                document.getElementById("main-nav").innerHTML =
+                    `<div class="mx-auto flex max-w-md items-center gap-1 rounded-2xl bg-ink p-2 shadow-lg ${wide} md:justify-between md:rounded-none md:bg-transparent md:p-0 md:shadow-none"><a href="${PAGES.home}" class="hidden items-center gap-2 font-display text-xl font-semibold text-base md:flex">${PIN}Neststay</a><div class="flex flex-1 gap-1 md:grid md:flex-none md:grid-flow-col md:auto-cols-fr md:gap-4">${links}</div></div>`;
+            }
+            // Bottom space = exactly the height covered by the fixed bars, so the end of every page clears them with the same gap
+            function fitBottomSpace() {
+                const mobile = innerWidth < 768,
+                    nav = document.getElementById("main-nav"),
+                    booking = document.getElementById("booking");
+                if (booking)
+                    booking.style.bottom =
+                        mobile ? innerHeight - nav.getBoundingClientRect().top + 8 + "px" : "";
+                const tops = [nav, booking]
+                    .filter(Boolean)
+                    .map((e) => e.getBoundingClientRect().top);
+                document.body.style.paddingBottom =
+                    mobile ? innerHeight - Math.min(...tops) + 32 + "px" : "64px";
+            }
+            addEventListener("resize", fitBottomSpace);
+            addEventListener("load", fitBottomSpace);
+            const n = (s) => parseFloat(s.replace(",", "."));
+            const priceBlock = (p, old) =>
+                old ?
+                    `<p class="flex flex-wrap items-center gap-x-3 gap-y-1 font-price"><b class="text-2xl text-cta">${p} €</b><s class="text-[1rem] text-ink/60">${old} €</s><span class="rounded-lg bg-cta px-2.5 py-0.5 text-sm font-semibold text-white">−${Math.round((1 - n(p) / n(old)) * 100)} %</span><span class="text-[1rem] text-ink/70">per nit</span></p>`
+                :   `<p class="font-price"><b class="text-2xl text-brand">${p} €</b> <span class="text-[1rem] text-ink/70">per nit</span></p>`;
+            const STAYS = [
+                {
+                    name: "Hostal Sa Marina",
+                    place: "Ciutadella de Menorca",
+                    price: "78,00",
+                    rating: "4,6",
+                    dates: "12–19 nov",
+                    feats: ["2 persones", "1 bany", "Central"],
+                },
+                {
+                    name: "Cala Blanca Suites",
+                    place: "Ciutadella de Menorca",
+                    price: "112,00",
+                    rating: "4,8",
+                    dates: "12–17 nov",
+                    feats: ["4 persones", "2 banys", "Terrassa"],
+                },
+                {
+                    name: "Hotel Port Vell",
+                    place: "Ciutadella de Menorca",
+                    price: "95,00",
+                    old: "110,00",
+                    rating: "4,4",
+                    dates: "13–19 nov",
+                    feats: ["3 persones", "1 bany", "Central"],
+                },
+                {
+                    name: "Casa del Port",
+                    place: "Ciutadella de Menorca",
+                    price: "69,00",
+                    rating: "4,2",
+                    dates: "12–19 nov",
+                    feats: ["2 persones", "1 bany", "Terrassa"],
+                },
+                {
+                    name: "Apartaments Es Pins",
+                    place: "Ciutadella de Menorca",
+                    price: "64,50",
+                    old: "75,00",
+                    rating: "4,1",
+                    dates: "14–19 nov",
+                    feats: ["4 persones", "2 habitacions", "1 bany"],
+                },
+                {
+                    name: "Hotel Cérvol By Nexta",
+                    place: "Ciutadella de Menorca",
+                    price: "50,99",
+                    old: "60,00",
+                    rating: "4,3",
+                    dates: "12–19 nov",
+                    feats: ["4 persones", "1 bany", "Central"],
+                },
+            ];
+            // Radial gradient from the bottom-right corner; name, place and room features live inside it (light text on dark)
+            const overlay =
+                "radial-gradient(130% 120% at 100% 100%,rgba(11,37,69,.92) 0%,rgba(11,37,69,.75) 35%,rgba(11,37,69,.3) 65%,rgba(11,37,69,0) 90%)";
+            // Price is the first thing inside the gradient (light text), followed by name and place; availability and room features live in the white box
+            const money = (p) => {
+                const [i, c] = p.split(",");
+                return `${i}<span class="text-[0.6em]">,${c} €</span>`;
+            };
+            // Two lines: old price + discount tag (smaller), then the new price. The old price keeps one single size so the strike-through stays aligned
+            const priceDark = (p, old) =>
+                `<div class="flex flex-col items-end gap-1.5 font-price">${old ? `<p class="flex items-center gap-2"><s class="text-[1rem] opacity-75">${old} €</s><span class="rounded-md bg-cta px-2 py-0.5 text-sm font-semibold text-white">−${Math.round((1 - n(p) / n(old)) * 100)} %</span></p>` : ""}<p class="flex items-baseline gap-2"><b class="text-3xl">${money(p)}</b><span class="text-[1rem] opacity-80">per nit</span></p></div>`;
+            const media = (s, i) =>
+                `<div class="relative aspect-[5/3] min-h-60 bg-soft"><img src="${imgFor(i)}" alt="" onerror="this.remove()" class="absolute inset-0 size-full object-cover"><div class="absolute inset-0" style="background:${overlay}"></div>${
+                    s.badge ?
+                        '<span class="absolute top-5 left-5 rounded-full bg-cta px-4 py-1.5 text-[1rem] font-medium text-white">Recomanat</span>'
+                    : s.dates ?
+                        `<span class="absolute top-5 left-5 flex items-center gap-2 rounded-full bg-base px-4 py-1.5 text-[1rem] font-medium text-ink"><svg viewBox="0 0 24 24" class="size-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>${s.dates}</span>`
+                    :   ""
+                }<span class="absolute top-5 right-5 rounded-full bg-base px-4 py-1.5 text-[1rem] font-medium text-ink">${s.rating} / 5 ★</span><div class="absolute inset-x-0 bottom-0 flex flex-col items-end gap-3 p-5 text-right text-base">${priceDark(s.price, s.old)}<div><h3 class="font-display text-xl font-semibold">${s.name}</h3><p class="text-[1rem] opacity-90">${s.place}</p></div></div></div>`;
+            const card = (s, i) =>
+                `<a href="${PAGES.lodging}" class="block overflow-hidden rounded-2xl bg-white ring-1 ring-soft hover:ring-brand">${media(s, i)}<div class="p-7 md:p-6"><div class="flex flex-wrap gap-2 text-[1rem] text-ink">${s.feats.map((f) => `<span class="rounded-full bg-soft px-4 py-1.5">${f}</span>`).join("")}</div></div></a>`;
+            document.getElementById("results").innerHTML = STAYS.map(card).join("");
+            renderNav("explore");
+            fitBottomSpace();
+        </script>
+    </body>
+</html>

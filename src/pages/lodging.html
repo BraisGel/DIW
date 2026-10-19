@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ca">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <title>Neststay · Allotjament</title>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&family=Sora:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.4"></script>
+        <style type="text/tailwindcss">
+            @theme {
+                --color-ink: #0b2545;
+                --color-brand: #13599b;
+                --color-cta: #d13a2a;
+                --color-cta-hover: #b5301f;
+                --color-cta-active: #982716;
+                --color-soft: #cbdff1;
+                --color-base: #f8fbfe;
+                --font-display: "Lexend", sans-serif;
+                --font-body: "Work Sans", sans-serif;
+                --font-price: "Sora", sans-serif;
+            }
+        </style>
+        <style>
+            @media (max-width: 767px) {
+                #main-nav {
+                    bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+                }
+            }
+        </style>
+    </head>
+    <body class="bg-base font-body text-lg text-ink antialiased">
+        <nav
+            id="main-nav"
+            class="fixed inset-x-5 z-50 md:inset-x-0 md:top-0 md:bg-ink md:px-10 md:py-4 lg:px-20"
+            aria-label="Navegació principal"
+        ></nav>
+
+        <main
+            class="md:mx-auto md:grid md:max-w-6xl md:grid-cols-[1.5fr_1fr] md:items-start md:gap-10 md:px-10 md:pt-28"
+        >
+            <div>
+                <!-- Slideshow: replaces the single hero image -->
+                <section class="relative" aria-label="Fotos de l'allotjament">
+                    <div
+                        id="stage"
+                        class="relative grid overflow-hidden bg-soft h-[55svh] place-items-center text-[1rem] text-ink md:h-auto md:aspect-[16/10] md:rounded-2xl"
+                    >
+                        <img
+                            id="slide-img"
+                            alt=""
+                            onerror="this.remove()"
+                            class="absolute inset-0 size-full object-cover"
+                        />
+                        <span
+                            class="absolute top-5 right-5 rounded-full bg-ink/75 px-4 py-1.5 text-[1rem] text-base"
+                            id="counter"
+                            >1/5</span
+                        >
+                        <button
+                            id="prev"
+                            aria-label="Foto anterior"
+                            class="absolute left-4 grid size-12 place-items-center rounded-full bg-base/90 text-2xl"
+                        >
+                            ‹
+                        </button>
+                        <button
+                            id="next"
+                            aria-label="Foto següent"
+                            class="absolute right-4 grid size-12 place-items-center rounded-full bg-base/90 text-2xl"
+                        >
+                            ›
+                        </button>
+                        <div id="dots" class="absolute bottom-12 flex gap-2.5 md:bottom-5"></div>
+                    </div>
+                </section>
+
+                <section
+                    class="-mt-6 rounded-t-3xl bg-base px-8 pt-10 pb-4 md:mt-0 md:px-0 md:pt-8"
+                >
+                    <p class="text-[1rem] text-ink/70">
+                        Hotel Cérvol By Nexta · Andorra la Vella, Andorra ·
+                        <b class="text-ink">4,3 / 5 ★</b>
+                    </p>
+                    <h1 class="mt-2 font-display text-4xl font-semibold">Habitació Quàdruple</h1>
+                    <h2 class="mt-10 font-display text-xl md:mt-8 font-semibold">
+                        Característiques
+                    </h2>
+                    <div class="mt-3 flex flex-wrap gap-3 text-[1rem]">
+                        <span class="rounded-full bg-soft px-5 py-2.5">4 persones</span
+                        ><span class="rounded-full bg-soft px-5 py-2.5">1 bany</span
+                        ><span class="rounded-full bg-soft px-5 py-2.5">Central</span
+                        ><span class="rounded-full bg-soft px-5 py-2.5">2 habitacions</span
+                        ><span class="rounded-full bg-soft px-5 py-2.5">2 terrasses</span>
+                    </div>
+                    <h2 class="mt-10 font-display text-xl md:mt-8 font-semibold">Descripció</h2>
+                    <p class="mt-3 max-w-prose leading-relaxed">
+                        Text de descripció de l'allotjament. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore. Dolor sit amet
+                        lorem, ipsum dolor sit amet.
+                    </p>
+                </section>
+            </div>
+
+            <!-- Booking card: fixed above the menu on mobile (position set by JS), sticky side card on desktop -->
+            <aside
+                id="booking"
+                class="fixed inset-x-5 z-40 rounded-2xl bg-soft p-6 md:p-5 shadow-lg md:sticky md:inset-x-auto md:top-28 md:bottom-auto md:shadow-none"
+            >
+                <div class="flex flex-wrap items-center gap-3 font-price">
+                    <s class="text-[1rem] text-ink/60">60,00 €</s
+                    ><span class="rounded-lg bg-cta px-2.5 py-0.5 text-sm font-semibold text-white"
+                        >−15 %</span
+                    >
+                </div>
+                <p class="flex items-baseline gap-2 font-price">
+                    <b class="text-5xl text-cta">50<span class="text-[0.6em]">,99 €</span></b>
+                    <span class="text-[1rem] text-ink/70">per nit</span>
+                </p>
+                <button
+                    class="mt-4 h-14 w-full rounded-xl bg-cta font-display text-lg font-semibold text-white hover:bg-cta-hover active:bg-cta-active"
+                >
+                    Reserva ara
+                </button>
+            </aside>
+        </main>
+
+        <script>
+            const PAGES = {
+                home: "index.html",
+                explore: "results.html",
+                lodging: "lodging.html",
+                guide: "styleguide.html",
+            };
+            const IMG_DIR = "../../assets/imgs/"; // hotel-1.jpg, hotel-2.jpg, hotel-3.jpg
+            const imgFor = (i) => `${IMG_DIR}hotel-${(i % 3) + 1}.jpg`;
+            const ICON = {
+                home: '<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/>',
+                explore: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',
+                map: '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
+                bookings:
+                    '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+            };
+            const MENU = [
+                ["home", "Inici"],
+                ["explore", "Explora"],
+                ["map", "Mapa"],
+                ["bookings", "Reserves"],
+            ];
+            const svgIcon = (p) =>
+                `<svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+            const PIN =
+                '<svg viewBox="0 0 24 24" class="size-8" style="color:#F8FBFE;--d:#0B2545" aria-hidden="true"><path fill="currentColor" d="M12 22.5C7 17 4.5 13.2 4.5 9.5a7.5 7.5 0 0 1 15 0c0 3.7-2.5 7.5-7.5 13z"/><ellipse fill="var(--d)" cx="12" cy="8.2" rx="1.9" ry="2.4"/><path fill="none" stroke="var(--d)" stroke-width="1.5" stroke-linecap="round" d="M7.9 10.8c.9 3 2.6 4.2 4.1 4.2s3.2-1.2 4.1-4.2"/></svg>';
+            function renderNav(active, wide = "md:max-w-[120rem]") {
+                const links = MENU.map(
+                    ([k, label]) =>
+                        `<a href="${PAGES[k] || "#"}" ${k === active ? 'aria-current="page"' : ""} class="flex flex-1 flex-col items-center gap-1 rounded-xl px-3 py-3 text-[13px] md:justify-center md:px-6 font-medium md:flex-none md:flex-row md:gap-2 md:text-[1rem] ${k === active ? "bg-soft text-ink" : "text-base hover:bg-white/10"}">${svgIcon(ICON[k])}${label}</a>`
+                ).join("");
+                document.getElementById("main-nav").innerHTML =
+                    `<div class="mx-auto flex max-w-md items-center gap-1 rounded-2xl bg-ink p-2 shadow-lg ${wide} md:justify-between md:rounded-none md:bg-transparent md:p-0 md:shadow-none"><a href="${PAGES.home}" class="hidden items-center gap-2 font-display text-xl font-semibold text-base md:flex">${PIN}Neststay</a><div class="flex flex-1 gap-1 md:grid md:flex-none md:grid-flow-col md:auto-cols-fr md:gap-4">${links}</div></div>`;
+            }
+            // Bottom space = exactly the height covered by the fixed bars, so the end of every page clears them with the same gap
+            function fitBottomSpace() {
+                const mobile = innerWidth < 768,
+                    nav = document.getElementById("main-nav"),
+                    booking = document.getElementById("booking");
+                if (booking)
+                    booking.style.bottom =
+                        mobile ? innerHeight - nav.getBoundingClientRect().top + 8 + "px" : "";
+                const tops = [nav, booking]
+                    .filter(Boolean)
+                    .map((e) => e.getBoundingClientRect().top);
+                document.body.style.paddingBottom =
+                    mobile ? innerHeight - Math.min(...tops) + 32 + "px" : "64px";
+            }
+            addEventListener("resize", fitBottomSpace);
+            addEventListener("load", fitBottomSpace);
+            // Slideshow
+            const IMAGES = ["hotel-1.jpg", "hotel-2.jpg", "hotel-3.jpg"];
+            const TOTAL = IMAGES.length;
+            let current = 0;
+            const stage = document.getElementById("stage"),
+                dots = document.getElementById("dots");
+            dots.innerHTML = Array.from(
+                { length: TOTAL },
+                (_, k) => `<button aria-label="Foto ${k + 1}" class="size-3 rounded-full"></button>`
+            ).join("");
+            function show(i) {
+                current = (i + TOTAL) % TOTAL;
+                const im = document.getElementById("slide-img");
+                if (im) im.src = IMG_DIR + IMAGES[current];
+                document.getElementById("counter").textContent = `${current + 1}/${TOTAL}`;
+                [...dots.children].forEach(
+                    (d, k) =>
+                        (d.className =
+                            "size-3 rounded-full " +
+                            (k === current ? "bg-base shadow" : "bg-base/50 shadow"))
+                );
+            }
+            [...dots.children].forEach((d, k) => (d.onclick = () => show(k)));
+            document.getElementById("prev").onclick = () => show(current - 1);
+            document.getElementById("next").onclick = () => show(current + 1);
+            let touchX = null;
+            stage.addEventListener(
+                "touchstart",
+                (e) => {
+                    touchX = e.touches[0].clientX;
+                },
+                { passive: true }
+            );
+            stage.addEventListener("touchend", (e) => {
+                if (touchX === null) return;
+                const dx = e.changedTouches[0].clientX - touchX;
+                if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+                touchX = null;
+            });
+            show(0);
+            renderNav("explore", "md:max-w-6xl");
+            fitBottomSpace();
+        </script>
+    </body>
+</html>

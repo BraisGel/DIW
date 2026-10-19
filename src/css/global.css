@@ -1,0 +1,65 @@
+/* @font-face {
+    font-family: "Lexend";
+    src: url("../../assets/fonts/Lexend-VariableFont_wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sora";
+    src: url("../../assets/fonts/Sora-VariableFont_wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "WorkSans";
+    src: url("../../assets/fonts/WorkSans-VariableFont_wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --dark-purple:  #441151;
+    --purple:       #883677;
+    --light-purple: #ca61c3;
+    --white:        #f7f7ff;
+    --dark-gray:    #332e33;
+
+    --dark-purple-cols:  68,  17,  81;
+    --purple-cols:       136, 54,  119;
+    --light-purple-cols: 202, 97,  195;
+    --white-cols:        247, 247, 255;
+    --dark-gray-cols:    51,  46,  51;
+
+    --lexend:    "Lexend";
+    --sora:      "Sora";
+    --work-sans: "WorkSans";
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--work-sans);
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+ */
